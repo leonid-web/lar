@@ -42,12 +42,16 @@
 
                             <div class="col-md-6">
                                 <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" required autocomplete="role" autofocus>
-                                <option value="vedu">Ведущий</option>
-                                <option value="dj">Ди-Джей</option>
-                                <option value="fotograf">Фотограф</option>
-                                <option value="videooperator">Видеооператор</option>
-                                <option value="oformitel">Оформитель</option>
-                                <option value="animator">Аниматор</option>
+                                    <?php
+                                    $role = DB::table('roles')->get();
+                                    foreach ($role as $rol) {
+                                    ?>
+                                    <option>
+                                        <?php
+                                        echo $rol ->role;
+                                        }
+                                        ?>
+                                    </option>
                                 </select>
                                 @error('role')
                                 <span class="invalid-feedback" role="alert">
