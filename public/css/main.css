@@ -1,8 +1,25 @@
 #head, .card{
-    background-color: lightsalmon;
+    background: linear-gradient(to left, #FFAEBC, #A0E7E5 50%, #B4F8C8);
     border-bottom: 2px solid #454d55;
 }
 body{
-    background: #b1692078;
+    background: linear-gradient(to left,   #FFAEBC, #A0E7E5 50%, #B4F8C8);
 }
+.form-control:hover, .form-control:focus{
+    background: #FBE7C6;
+}
+.form-control{
+    background: #FFAEBC;
+}
+.btn{
+    background: #FFAEBC;
+}
+.btn:hover{
+    color: black;
+    background: #FBE7C6;
+}
+#avatar{
+    color: black;
+}
+
 
