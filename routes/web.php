@@ -28,4 +28,8 @@ Route::get('/suc', function() {
 });
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
 Route::post('/admin/razdels', 'UserController@store')->middleware('auth');
+//Route::get('/admin/events/{event}', 'UserController@index')->middleware('admin');
+Route::get('/admin', 'EventController@index')->middleware('admin');
+Route::get('/admin/events/{event}', 'EventController@edit')->middleware('admin');
+Route::patch('admin/events/{event}/update', 'EventController@update')->middleware('admin');
 
