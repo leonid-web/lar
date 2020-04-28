@@ -27,29 +27,40 @@
                 <button type="submit" class="btn btn-primary">Создать</button>
             </form>
                 <br><br>
-{{--                @if (count($users) > 0)--}}
-{{--                <table class="table table-striped task-table">--}}
-{{--                    <tbody>--}}
 
-{{--                    @foreach($users as $user)--}}
-{{--                        @if($user->id<>Auth::user()->id)--}}
-{{--                            <tr>--}}
-{{--                                <td class="table-text">--}}
-{{--                                    <div>{{ $user-> name }}</div>--}}
-{{--                                </td>--}}
-{{--                                <td>--}}
-{{--                                    <p class="text-primary">{{ ($user->is_manager) == 1 ? "Модератор" : "" }}</p>--}}
-{{--                                </td>--}}
+                <table class="table table-striped task-table">
+                    <tbody>
 
+                    <?php
+                    $razdels = DB::table('razdels')->get();?>
+                    @foreach ($razdels as $razdel)
 
-{{--                            </tr>--}}
-{{--                        @endif--}}
+                        <tr>
 
-{{--                    @endforeach--}}
+                        <td>{{ $razdel ->title}}</td>
+                            <td>
+                                <form action="{{url('admin/razdels/'.$razdel->id)}}" method="GET">
+                                    @csrf
 
-{{--                    </tbody>--}}
-{{--                </table>--}}
-{{--                @endif--}}
+                                    <button class="btn btn-outline-primary" title="РЕДАКТИРОВАТЬ">РЕДАКТИРОВАТЬ</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="admin/razdels/{{ $razdel->id }}" method="POST" >
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button class="btn btn-outline-danger" title="УДАЛИТЬ">УДАЛИТЬ</button>
+
+                                </form>
+                            </td>
+                        </tr>
+
+                    @endforeach
+
+                    </tbody>
+                </table>
+
                     <br><br>
                         <input class="form-control" type="text" placeholder="Название" id="search-text" onkeyup="tableSearch()">
                     <table class="table table-striped" id="info-table">

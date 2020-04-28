@@ -30,6 +30,11 @@ Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin'
 Route::post('/admin/razdels', 'UserController@store')->middleware('auth');
 //Route::get('/admin/events/{event}', 'UserController@index')->middleware('admin');
 Route::get('/admin', 'EventController@index')->middleware('admin');
+Route::delete('/admin/razdels/{razdel}', 'UserController@destroy')->middleware('admin');
+Route::get('/admin/razdels/{razdel}', 'UserController@edit')->middleware('admin');
+Route::patch('/admin/razdels/{razdel}/update', 'UserController@update')->middleware('admin');
+//Route::get('/admin', 'UserController@index')->middleware('admin');
 Route::get('/admin/events/{event}', 'EventController@edit')->middleware('admin');
 Route::patch('admin/events/{event}/update', 'EventController@update')->middleware('admin');
+
 

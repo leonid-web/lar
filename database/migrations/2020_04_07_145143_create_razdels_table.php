@@ -15,11 +15,11 @@ class CreateRazdelsTable extends Migration
     {
         Schema::create('razdels', function (Blueprint $table) {
             $table->bigIncrements('id');
-//            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('title');
             $table->timestamps();
 
-//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -22,14 +22,14 @@
                                         @csrf
                                         @method('PATCH')
                                         <select> <?php
-                                            $users = DB::table('users')->get();
-                                            foreach ($users as $user) {
-                                            ?>
-                                            <option value="<?php $user->id ?>" name="manager" id="manager">
-                                            <?php
-                                            echo $user ->name;
-                                                }
-                                            ?></select>
+                                            $users = DB::table('users')->get();?>
+                                            @foreach ($users as $user)
+
+                                            <option value="{{$user->id}}" name="manager" id="manager">
+
+                                            {{ $user ->name}}
+                                              @endforeach
+                                            </select>
                                         <button class="btn btn-primary">Изменить</button>
                                     </form></td>
                             </tr>
